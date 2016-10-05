@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Movie(models.Model):
-    movie_id = models.IntegerField()
     title = models.CharField(max_length = 50)
     release_date = models.CharField(max_length = 50)
     video_release = models.CharField(max_length = 40)
@@ -28,8 +27,13 @@ class Movie(models.Model):
     western = models.IntegerField()
 
 class Rater(models.Model):
-    rater_id = models.IntegerField()
     age = models.IntegerField()
     gender = models.CharField(max_length = 1)
     occupation = models.CharField(max_length = 50)
     zip_code = models.CharField(max_length = 40)
+
+class Rating(models.Model):
+    rater = models.ForeignKey(Rater)
+    movie = models.ForeignKey(Movie)
+    rating = models.IntegerField()
+    time_stamp = models.IntegerField()
