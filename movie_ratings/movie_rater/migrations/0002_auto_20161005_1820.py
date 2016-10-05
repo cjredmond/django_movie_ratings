@@ -31,7 +31,7 @@ def add_rating_data(apps, schema_editor):
         read_rating = csv.reader(infile, delimiter="\t")
         for row in read_rating:
             rater = Rater.objects.get(id=row[0])
-            movie = Movie.objects.get(id=row[0])
+            movie = Movie.objects.get(id=row[1])
             Rating.objects.create(rater=rater, movie=movie, rating=row[2], time_stamp=row[3])
 
 class Migration(migrations.Migration):
