@@ -26,6 +26,9 @@ class Movie(models.Model):
     war = models.BooleanField()
     western = models.BooleanField()
 
+    def __str__(self):
+        return self.title
+
 class Rater(models.Model):
     age = models.IntegerField()
     gender = models.CharField(max_length = 1)
